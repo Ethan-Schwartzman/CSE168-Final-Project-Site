@@ -3,7 +3,7 @@
 ## Overview
 For our CSE 168 final project, we have chosen to implement option 3.3, the Image-Based Rendering: Light Field Viewer. For this milestone, we implemented a basic version of the light field viewer with no optimizations or add-ons.
 
-![Milestone](CSE168-Final-Project-Site/docs/assets/images/milestone.png)
+![Milestone](/docs/assets/images/milestone.png)
 
 The resource that we referred to heavily was the 1996 light field rendering paper mentioned in lecture. Since the writeup states that the Stanford data had issues with its formatting, we also found a dataset from the University of Konstanz which contains 4D light field data. The dataset contains 23 scenes of 9x9x512x512x3 light fields.
 
