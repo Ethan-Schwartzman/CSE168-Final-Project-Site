@@ -24,6 +24,10 @@
         <h2> Future Additions </h2>
         <p> There are several future additions we are considering for the final version of the project. One feature is prefiltering the light field using an aperture as in the original paper. This would help with antialiasing the light field and applying a blur to make the transitions more smooth. 
         <p> Another option is compression since the 4D data takes up a lot of memory on the GPU. The paper uses vector quantization (VQ) compression to compress with a 120:1 ratio. Even at such a high ratio, this has minimal visual effects, so this method of compression is something we will look into. Hardware texture mapping could also help to optimize efficiency of sampling from and transforming the light field data.
+        <h2>Data Loading</h2>
+        <p>The dataset contains 23 scenes, each stored as 512x512 png images from 81 different viewing angles. We use lodepng from the starter code to handle decoding from a png to an unsigned char format. We then convert it an additional time to a float3 for use with OptiX.</p>
+        <h2>Input</h2>
+        <p>We handle user interaction with glut by building on top of the starter code. We register input callbacks for the arrow keys and scroll wheel to allow for moving and zooming the camera.</p>
         <h2> Interpolation: Bilinear Interpolation </h2>
         <p> Since the images in the light field dataset we're using are only 512x512 pixels, we needed to use some sort of interpolation method when resizing the final image. We settled on bilinear interpolation which provided the middle ground between quality and performance in our case.
         <h2> Add-on: Vector Quantization </h2>
@@ -38,12 +42,12 @@
         <p> After finding the set codewords, the image must be encoded into these codewords. This task involves finding the codeword that is closest in Euclidean distance for each of the tiles. Since this can repeat thousands or even hundreds of thousands of times, we used a KD-tree to make this process significantly more efficient. We used the nanoflann header-only library for this so we would not have to implement KD-trees from scratch.
         <p> For rendering, both the codebook and encoded image are sent to the gpu. The codebook is stored as a buffer of float3 data and the encoded image is a buffer of indices to specific code words. 
         <div>
-            <video width="960" height="540" controls>
+            <video width="85%" controls>
                 <source src="./docs/assets/videos/rosemary.mp4" type="video/mp4">
             </video>
         </div>
         <div>
-            <video width="960" height="540" controls>
+            <video width="85%" controls>
                 <source src="./docs/assets/videos/dishes.mp4" type="video/mp4">
             </video>
         </div>
