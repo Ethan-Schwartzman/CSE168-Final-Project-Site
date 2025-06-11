@@ -26,8 +26,6 @@
         <p> Another option is compression since the 4D data takes up a lot of memory on the GPU. The paper uses vector quantization (VQ) compression to compress with a 120:1 ratio. Even at such a high ratio, this has minimal visual effects, so this method of compression is something we will look into. Hardware texture mapping could also help to optimize efficiency of sampling from and transforming the light field data.
         <h2> Interpolation: Bilinear Interpolation </h2>
         <p> Since the images in the light field dataset we're using are only 512x512 pixels, we needed to use some sort of interpolation method when resizing the final image. We settled on bilinear interpolation which provided the middle ground between quality and performance in our case.
-        ![Interpolated](/docs/assets/images/interpolated.png)
-        ![Not Interpolated](/docs/assets/images/noninterpolated.png)
         <h2> Add-on: Vector Quantization </h2>
         <p> One challenge with light field rendering is the rapid rate at which the data grows. For 4D images, even increasing the size by a few pixels can quickly add up. The dataset we selected contains 9x9x512x512 pixels which are stored on the gpu as three 4-byte floats totaling 254803968 bytes or 254.8 mb. This is both slow to move between the gpu and cpu as well as memory inefficient.
         <p> To address this problem, various methods of data compression can be applied. We chose to use vector quantization (VQ) as that was one of the approaches taken in Levoy Hanrahan’s original paper. VQ works by selecting a set of vectors which best approximates the image known as the codebook and recording the closest matching codeword for each partition of the image. Then, only the codebook and list of codewords need to be transferred rather than the whole image.
@@ -41,12 +39,12 @@
         <p> For rendering, both the codebook and encoded image are sent to the gpu. The codebook is stored as a buffer of float3 data and the encoded image is a buffer of indices to specific code words. 
         <div>
             <video width="960" height="540" controls>
-                <source src="/docs/assets/videos/rosemary.mp4" type="video/mp4">
+                <source src="./docs/assets/videos/rosemary.mp4" type="video/mp4">
             </video>
         </div>
         <div>
             <video width="960" height="540" controls>
-                <source src="/docs/assets/videos/dishes.mp4" type="video/mp4">
+                <source src="./docs/assets/videos/dishes.mp4" type="video/mp4">
             </video>
         </div>
     </body>
