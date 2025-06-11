@@ -46,6 +46,10 @@ After finding the set codewords, the image must be encoded into these codewords.
 
 For rendering, both the codebook and encoded image are sent to the gpu. The codebook is stored as a buffer of float3 data and the encoded image is a buffer of indices to specific code words. 
 
-![Rosemary](/docs/assets/videos/rosemary.mp4)
+<video width="960" height="540" controls>
+  <source src="/docs/assets/videos/rosemary.mp4" type="video/mp4">
+</video>
 
-![Dishes](/docs/assets/videos/dishes.mp4)
+<video width="960" height="540" controls>
+  <source src="/docs/assets/videos/dishes.mp4" type="video/mp4">
+</video>
